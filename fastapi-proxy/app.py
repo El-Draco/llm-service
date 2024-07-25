@@ -28,7 +28,7 @@ async def proxy(
     request: Request,
     credentials: HTTPBasicCredentials = Depends(get_current_user)
 ):
-    url = f"http://0.0.0.0:8080/{path}"
+    url = f"http://ollama:11434/{path}"
     async with AsyncClient() as client:
         if request.method == "GET":
             response = await client.get(url, params=request.query_params)
