@@ -31,9 +31,9 @@ async def proxy(
     url = f"http://ollama:11434/{path}"
     async with AsyncClient() as client:
         if request.method == "GET":
-            response = await client.get(url, params=request.query_params)
+            response = await client.get(url, params=request.query_params, headers=request.headers)
         elif request.method == "POST":
-            response = await client.post(url, data=await request.body())
+            response = await client.post(url, data=await request.body(), params=request.query_params, headers=request.headers)
         else:
             raise HTTPException(status_code=405, detail="Method Not Allowed")
     return Response(content=response.content, status_code=response.status_code)
