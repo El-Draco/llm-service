@@ -1,0 +1,24 @@
+services:
+  ollama-server:
+    build:
+      context: fasapi-proxy/
+    container_name: ollama-server
+    networks:
+      - ollama-network
+    ports:
+      - "8080:8080"  # Adjust ports if necessary
+
+  fastapi-proxy:
+    build:
+      context: ollama/
+    container_name: fastapi-ollama-proxy
+    networks:
+      - ollama-network
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+networks:
+  ollama-network:
+    driver: bridge
