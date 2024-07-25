@@ -6,7 +6,7 @@ services:
     networks:
       - ollama-network
     volumes:
-      - ./data:/root/.ollama
+      - .data:/root/.ollama
 
   fastapi-proxy:
     build:
