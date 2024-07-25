@@ -31,17 +31,21 @@ Any machine with enough memory to support the desired model and Docker installed
 git clone https://github.com/El-Draco/llm-service.git
 cd llm-service
 ```
-2. Follow the `.env.sample` and create a `.env` file with a username and password of your choice
+2. Create a folder `.data` to store all models and ollama data
+```bash
+mkdir .data
+```
+3. Follow the `.env.sample` and create a `.env` file with a username and password of your choice
 ```bash
 USERNAME = medhat
 PASSWORD = medhat
 ```
-3. Build and run the container
+4. Build and run the container
 ```bash
 docker compose up
 ```
-4. Wait for embedding models and llms to download (see logs for status)
-5. To test the server open `http://localhost:8000` on your browser or run `curl` from the terminal
+5. Wait for embedding models and llms to download (see logs for status)
+6. To test the server open `http://localhost:8000` on your browser or run `curl` from the terminal.
 ```bash
 curl -u USERNAME:PASSWORD http://localhost:8000/
 ```
