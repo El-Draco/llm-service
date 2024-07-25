@@ -14,9 +14,11 @@ Allows Users to communicate with an LLM using a simple API server that provides 
 - LLM: `mistral`
 
 These can be changed easily by modifying the `entrypoint.sh` from the ollama directory.
-Note however, even if the models haven't been downloaded on startup, making an API call to
-any desired model will automatically download it on the machine. In this repo, the default models are
-downloaded from the `entrypoint.sh` script simply for ease of use.
+In this repo, the default models are downloaded from the `entrypoint.sh` script simply for ease of use.
+For more LLMs and embeddings model, refer to the official Ollama api on endpoints to pull new models
+to the server.
+
+See: https://github.com/ollama/ollama/blob/main/docs/api.md
 
 ## Requirements
 Any machine with enough memory to support the desired model and Docker installed.
