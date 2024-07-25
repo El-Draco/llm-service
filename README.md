@@ -1,7 +1,5 @@
 # FastAPI Proxy for Ollama
 
----
-
 ## Overview 
 This repository is meant to provide developers with a starting point to move their LLM applications
 to production. Simply put, this is a simple fastapi proxy server for Ollama with basic HTTP authentication.
@@ -11,7 +9,6 @@ The project comprises two containerized services:
 
 Allows Users to communicate with an LLM using a simple API server that provides basic security.
 
----
 ## Default setup:
 - Embedding Model: `mxbai-embed-large`
 - LLM: `mistral`
@@ -20,11 +17,10 @@ These can be changed easily by modifying the `entrypoint.sh` from the ollama dir
 Note however, even if the models haven't been downloaded on startup, making an API call to
 any desired model will automatically download it on the machine. In this repo, the default models are
 downloaded from the `entrypoint.sh` script simply for ease of use.
----
+
 ## Requirements
 Any machine with enough memory to support the desired model and Docker installed.
 
----
 ## Instructions
 1. Clone & Enter the repository:
 ```bash
@@ -53,7 +49,6 @@ You should get the following response:
 ```text
 Ollama is running
 ```
----
 
 ## Sample Request:
 
@@ -92,4 +87,3 @@ curl -u medhat:medhat http://localhost:8000/api/generate -d '{
   "prompt": "Why is the sky blue?",
   "stream": false
 }'
-```
