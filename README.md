@@ -56,30 +56,32 @@ Ollama is running
 
 ### Using Python:
 ```python
-import requests
-from requests.auth import HTTPBasicAuth
 
 # Define the URL of the FastAPI proxy server and the endpoint
-url = 'http://localhost:8000/some-endpoint'
+url = 'http://localhost:8000/api/chat'
 
 # Define your username and password
-username = 'your_username'
-password = 'your_password'
+username = 'radi'
+password = 'radi'
 
-# Define the payload
-payload = {
-    'prompt': 'What is the capital of France?',
-    "model": "mistral",
-    "stream": False,
-}
+def generate_response(prompt):
+    # Define the payload
+    payload = {
+        'messages': prompt,
+        "model": "gemma2:27b-instruct-q6_K",
+        # "temperature": "0",
+        "stream": False,
+    }
 
-# Make the POST request with HTTP Basic Authentication
-response = requests.post(
-    url,
-    json=payload,
-    auth=HTTPBasicAuth(username, password)
-)
-print('Response:', response.json()["response"])
+    # Make the POST request with HTTP Basic Authentication
+    response = requests.post(
+        url,
+        json=payload,
+        auth=HTTPBasicAuth(username, password)
+    )
+    return response.json()["message"]["content"]
+response = generate_response("Why is the sky blue?")
+print('Response:', response)
 ```
 
 ### Sample Request using curl:
@@ -89,3 +91,34 @@ curl -u medhat:medhat http://localhost:8000/api/generate -d '{
   "prompt": "Why is the sky blue?",
   "stream": false
 }'
+```
+
+### To pull a new model
+
+```python
+import requests
+from requests.auth import HTTPBasicAuth
+
+# Define the URL of the FastAPI proxy server and the endpoint
+url = 'http://localhost:8000/api/pull'
+
+# Define your username and password
+username = 'your_usernamme'
+password = 'your_password'
+
+def pull_model():
+
+    # Define the payload
+    payload = {
+        "model": "llama3",
+    }
+
+    # Make the POST request with HTTP Basic Authentication
+    response = requests.post(
+        url,
+        json=payload,
+        auth=HTTPBasicAuth(username, password)
+    )
+    print(response.content)
+    return response
+```
