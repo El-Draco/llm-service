@@ -1,4 +1,4 @@
-FROM ollama/ollama
+FROM ollama/ollama:rocm
 
 # Copy any necessary scripts or configuration files
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

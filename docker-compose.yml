@@ -7,13 +7,9 @@ services:
       - ollama-network
     volumes:
       - .data:/root/.ollama
-    deploy:
-          resources:
-            reservations:
-              devices:
-                - driver: nvidia
-                  count: 1
-                  capabilities: [gpu]
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/kfd:/dev/kfd
 
   fastapi-proxy:
     build:
@@ -27,7 +23,6 @@ services:
       - "8000:8000"
     env_file:
       - .env
-
 networks:
   ollama-network:
     driver: bridge
